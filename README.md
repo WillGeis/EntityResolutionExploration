@@ -177,6 +177,7 @@ def __add_entity_ids_m2(entities):
 #### __add_entity_ids_m2
 Uses a granular, custom-defined hierarchy (Levenshtein levels 1–3) and a two-stage expectation/maximization training process. By cross-training weights between names and addresses, it effectively learns to ignore specific simulated OCR noise (either with provided datasets or with below dataset builders' simulators) and whitespace artifacts.
 
+```python
 def __add_entity_ids_m3(entities):
     df = pd.DataFrame(entities)
     df["unique_id"] = range(len(df))
@@ -247,6 +248,7 @@ def __add_entity_ids_m3(entities):
     )
 
     return entities
+```
 
 #### __add_entity_ids_m3
 A fuzzy-first approach prioritizing Jaro-Winkler to reward correct starts of entity names (prefixes "p" see [here](https://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance)). It uses broad probabilistic blocking and automated weight estimation, making it the most robust choice for inconsistent, messy real-world data. 
